@@ -127,6 +127,7 @@ add_action('wp_enqueue_scripts', function () {
    * Globals.
    */
   bb_enqueue_style('br-global', 'dist/style/index.css');
+  bb_enqueue_style('tailwind', 'dist/style/tailwind.css');
 
   // remove gutenberg's stylesheet
   wp_dequeue_style('wp-block-library');
