@@ -23,8 +23,21 @@ if (!defined('BB_EXTENSIONS_PATH')) {
   define('BB_EXTENSIONS_PATH', BB_THEME_PATH . 'extensions/');
 }
 
-// Other Includes
+// Global Classes
+require_once(BB_INCLUDES_PATH . 'class-parking_space.php');
+
+// Extensions
+// ...
+
+// Includes
+require_once(BB_INCLUDES_PATH . 'reset.php');
 require_once(BB_INCLUDES_PATH . 'pt.php');
+require_once(BB_INCLUDES_PATH . 'admin.php');
+require_once(BB_INCLUDES_PATH . 'wp-nav_menu.php');
+require_once(BB_INCLUDES_PATH . 'wp-page.php');
+
+// Functions
+require_once(BB_INCLUDES_PATH . 'parking_space-functions.php');
 
 /**
  * Theme specific supports.

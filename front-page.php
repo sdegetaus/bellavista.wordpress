@@ -1,32 +1,31 @@
 <?php
 
-$result = false;
-if (isset($_GET['action']) && $_GET['action'] === 'reserve') {
-  if (
-    isset($_GET['parking_space_id']) &&
-    !empty($_GET['parking_space_id']) &&
-    is_numeric($_GET['parking_space_id'])
-  ) {
-    $post = get_post($_GET['parking_space_id']);
-    if ($post) {
-      $busy = get_post_meta($post->ID, 'busy', true);
-      if ($busy) {
-        $result = 'Busy! ' . $post->ID;
-      } else {
-        update_post_meta($post->ID, 'busy', 1);
-        $result = 'Success ' . $post->ID;
-      }
-    }
-  }
-}
-
 if (!defined('ABSPATH')) {
   exit;
 }
 
-get_header();
 
-wp_body_open();
+// $result = false;
+// if (isset($_GET['action']) && $_GET['action'] === 'reserve') {
+//   if (
+//     isset($_GET['parking_space_id']) &&
+//     !empty($_GET['parking_space_id']) &&
+//     is_numeric($_GET['parking_space_id'])
+//   ) {
+//     $post = get_post($_GET['parking_space_id']);
+//     if ($post) {
+//       $busy = get_post_meta($post->ID, 'busy', true);
+//       if ($busy) {
+//         $result = 'Busy! ' . $post->ID;
+//       } else {
+//         update_post_meta($post->ID, 'busy', 1);
+//         $result = 'Success ' . $post->ID;
+//       }
+//     }
+//   }
+// }
+
+get_header();
 
 $all_spaces_query = new WP_Query([
   'post_type'  => 'parking_space',
@@ -61,16 +60,13 @@ $available_spaces_query = new WP_Query([
 
 <main id="page-content">
   <div class="container">
-
-    <div class="wrapper w-full">
+    <div class="wrapper w-100">
 
       <?php if (!empty($result)) : ?>
         <div class="message"><?php echo $result; ?></div>
       <?php endif; ?>
 
-      <?php echo wp_get_attachment_image(20, 'full-size'); ?>
-
-      <?php /* if ($all_spaces_query->have_posts()) : ?>
+      <?php if ($all_spaces_query->have_posts()) : ?>
         <ul>
           <?php
           while ($all_spaces_query->have_posts()) :
@@ -79,15 +75,15 @@ $available_spaces_query = new WP_Query([
             <li>
               <strong><?php echo get_the_title(); ?></strong><br>
               <span>Type: <?php echo get_field('type'); ?></span><br>
-              <span>Dueño: <?php echo get_field('owner'); ?></span><br>
-              <span><?php echo (get_field('busy') ? 'Ocupador por: ' . get_field('taken_by') : 'Disponible para rentar'); ?></span>
+              <span>Dueño: <?php var_export(get_field('owner')); ?></span><br>
+              <span>rented_by_user: <?php echo var_export(get_field('rented_by_user')); ?></span><br>
             </li>
           <?php
           endwhile;
           wp_reset_postdata();
           ?>
         </ul>
-      <?php endif; */ ?>
+      <?php endif;  ?>
 
       <?php if ($available_spaces_query->have_posts()) : ?>
         <form class="flex w-full justify-center items-center flex-wrap">

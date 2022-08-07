@@ -57,6 +57,5 @@ add_action('init', function () {
   // ...
 
   // Custom PTs 
-  // require_once('pt-parking_space.php');
-
+  require_once('pt-parking_space.php');
 });

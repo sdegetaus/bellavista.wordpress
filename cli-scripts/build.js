@@ -1,12 +1,17 @@
-const execSync = require('child_process').execSync;
-const fs = require('fs');
-const path = require('path');
+import { execSync } from 'child_process';
+import { rmdirSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 console.log('Format src directory...');
 execSync('npm run prettier', { stdio: 'inherit' });
 
 console.log('Clearing build directory...');
-fs.rmdirSync(path.join(__dirname, '../dist'), { recursive: true });
+rmdirSync(join(__dirname, '../dist'), { recursive: true });
 
 console.log('Building styles...');
 execSync('npm run build-style', { stdio: 'inherit' });
