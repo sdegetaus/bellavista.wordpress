@@ -1,0 +1,28 @@
+{
+  "name": "imsys-theme",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "node ./cli-scripts/build.js",
+    "build-js": "babel ./src/js --out-dir ./dist/js",
+    "build-style": "concurrently \"node-sass ./src/style --output-style compressed --omit-source-map-url --output ./dist/style\" \"tailwindcss -i ./src/style/tailwind.css -o ./dist/style/tailwind.css --minify\"",
+    "make-pot": "wp i18n make-pot . languages/busybytes.pot --skip-js",
+    "prettier": "prettier --write ./src",
+    "start": "node ./cli-scripts/start.js",
+    "watch-js": "babel --watch ./src/js --out-dir ./dist/js",
+    "watch-style": "concurrently \"node-sass ./src/style --output-style compressed --omit-source-map-url --output ./dist/style -w\" \"tailwindcss -i ./src/style/tailwind.css -o ./dist/style/tailwind.css -w --minify\""
+  },
+  "type": "module",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "@tailwindcss/typography": "^0.5.4",
+    "babel-preset-minify": "^0.5.1",
+    "concurrently": "^6.2.2",
+    "core-js": "^2.6.12",
+    "node-sass": "^6.0.1",
+    "prettier": "^2.4.1",
+    "tailwindcss": "^3.1.7"
+  }
+}

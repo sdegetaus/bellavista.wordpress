@@ -1,0 +1,3 @@
+# Disallow listing
+# https://stackoverflow.com/questions/5932641/deny-directory-listing-with-htaccess
+Options -Indexes
