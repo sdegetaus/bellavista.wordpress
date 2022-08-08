@@ -18,6 +18,8 @@ if (!function_exists('br_get_parking_spaces')) {
       'post_status'    => 'publish',
       'posts_per_page' => -1,
       'fields'         => 'ids',
+      'orderby'        => 'title',
+      'order'          => 'ASC',
     ];
 
     if (is_array($query_args) && count($query_args) > 0) {
@@ -60,7 +62,7 @@ if (!function_exists('br_get_available_parking_spaces')) {
         [
           'key'     => 'current_tenant',
           'value'   => '0',
-          'compare' => '>',
+          'compare' => '<=',
           'type'    => 'NUMERIC',
         ]
       ]

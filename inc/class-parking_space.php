@@ -101,6 +101,16 @@ class Parking_Space
   }
 
   /**
+   * Get title.
+   * 
+   * @return string 
+   */
+  public function get_title()
+  {
+    return $this->title;
+  }
+
+  /**
    * Get owner ID.
    * 
    * @return int 

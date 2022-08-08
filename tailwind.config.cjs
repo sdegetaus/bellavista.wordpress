@@ -1,7 +1,7 @@
 module.exports = {
   content: ['./*.php', './**/*.php'],
   theme: {},
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
   safelist: [
     {
       pattern: /font-(light|normal|medium|semibold|bold)/,
